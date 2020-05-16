@@ -14,6 +14,13 @@ const mockUserData = [
     { name: 'Henry' }
 ];
 
+// Sample json data for dashboard stats
+const dashboardData = {
+    totalUsers: 54,
+    activeUsers: 51,
+    inactiveUsers: 3
+};
+
 // Create a get request to get access to user's data on success
 
 app.get('/users', function(req, res) {
@@ -61,6 +68,15 @@ app.post('/login', function(req, res) {
             message: 'password and username do not match'
         });
     }
+});
+
+// Creating a new endpoint to get list of dashboard statistics
+app.get('/dashboard', function(req, res) {
+    res.json({
+        success: true,
+        message: 'Getting the dashboard data',
+        dashData: dashboardData
+    });
 });
 
 // Start up your server locally on port 8000 as the first arguement
