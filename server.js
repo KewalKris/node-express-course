@@ -20,6 +20,17 @@ app.get('/users', function(req, res) {
     });
 });
 
+// Create a param route to pass variable through url which can be accessed through req.params
+
+app.get('/users/:id', function(req, res) {
+    console.log(req.params.id);
+    res.json({
+        success: true,
+        message: 'Got one user',
+        user: req.params.id
+    });
+});
+
 // Start up your server locally on port 8000 as the first arguement
 
 app.listen(8000, function() {
